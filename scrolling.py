@@ -10,6 +10,15 @@ from selenium.webdriver.support import expected_conditions as EC
 
 # define function to scroll the search results 
 def infinite_scroll(driver,className):
+    """
+    scrolls in a driver.
+
+    :param driver: The driver which it will scrolls in it.
+    :type driver: (chrome) driver
+    :param className: The name of the class it will scroll untill there are no more.
+    :type className: css class name
+
+    """
     els = driver.find_elements(By.CLASS_NAME, className)
     timeout = time.time() + 7
     while els and time.time() < timeout:
