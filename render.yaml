@@ -1,3 +1,2 @@
-type: web
-build:
+web:
   dockerfile: Dockerfile
