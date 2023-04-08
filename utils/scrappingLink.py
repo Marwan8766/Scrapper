@@ -21,7 +21,10 @@ place = Place()
 
 place.link = "https://www.google.com/maps/place/Masged+and+Madraset+Soltan+Hassn/@30.0328679,31.2562843,17z/data=!3m1!4b1!4m6!3m5!1s0x145840ac1c97a4f7:0x8412ca0f201c9352!8m2!3d30.0328679!4d31.2562843!16s%2Fg%2F12hm9lhq7?authuser=0&hl=en"
 
-path =  r'./utils/chromedriver.exe'
+# path =  r'./utils/chromedriver.exe'
+
+# Automatically install and use the latest Chrome driver
+path = ChromeDriverManager().install()
 
 
 def fill_place_details(place,driver_path=path):

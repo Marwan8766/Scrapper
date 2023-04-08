@@ -15,7 +15,11 @@ from utils.placeClass import Place
 
 
 
-chrome_driver_path = r'./utils/chromedriver.exe'
+# chrome_driver_path = r'./utils/chromedriver.exe'
+
+# Automatically install and use the latest Chrome driver
+chrome_driver_path = ChromeDriverManager().install()
+
 query = "restaurants in cairo"
 
 
