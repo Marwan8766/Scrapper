@@ -15,11 +15,7 @@ from utils.placeClass import Place
 
 
 
-# chrome_driver_path = r'./utils/chromedriver.exe'
-
-# Use ChromeDriver from Render server
-chrome_driver_path = '/usr/bin/chromedriver'  # Path to Chromedriver on Render
-
+chrome_driver_path = r'./utils/chromedriver.exe'
 query = "restaurants in cairo"
 
 
@@ -43,18 +39,11 @@ def find_places_in_city(query,driver_path=chrome_driver_path,placesLength=None):
 
 
   # creating the driver
-  # options = webdriver.ChromeOptions()
-  # options.add_experimental_option('excludeSwitches', ['enable-logging'])
-
-  # # the following line is used when using selenium in server to not open a browser
-  # options.add_argument("--headless")
   options = webdriver.ChromeOptions()
-  options.binary_location = '/usr/bin/google-chrome-stable'  # Path to Chrome binary on Render
-  options.add_argument('--disable-extensions')
-  options.add_argument('--headless')  # If you want to run in headless mode
-  options.add_argument('--disable-gpu')
-  options.add_argument('--no-sandbox')
-  options.add_argument('--disable-dev-shm-usage')
+  options.add_experimental_option('excludeSwitches', ['enable-logging'])
+
+  # the following line is used when using selenium in server to not open a browser
+  options.add_argument("--headless")
 
   try:
       
