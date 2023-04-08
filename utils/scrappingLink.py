@@ -21,8 +21,10 @@ place = Place()
 
 place.link = "https://www.google.com/maps/place/Masged+and+Madraset+Soltan+Hassn/@30.0328679,31.2562843,17z/data=!3m1!4b1!4m6!3m5!1s0x145840ac1c97a4f7:0x8412ca0f201c9352!8m2!3d30.0328679!4d31.2562843!16s%2Fg%2F12hm9lhq7?authuser=0&hl=en"
 
-path =  r'./utils/chromedriver.exe'
+# path =  r'./utils/chromedriver.exe'
 
+# Use ChromeDriver from Render server
+path = '/usr/bin/chromedriver'  # Path to Chromedriver on Render
 
 def fill_place_details(place,driver_path=path):
     """
@@ -35,9 +37,18 @@ def fill_place_details(place,driver_path=path):
 
     """ 
     # creating the driver
+    # options = webdriver.ChromeOptions()
+    # options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    # options.add_argument("--headless")
     options = webdriver.ChromeOptions()
-    options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    options.add_argument("--headless")
+    options.binary_location = '/usr/bin/google-chrome-stable'  # Path to Chrome binary on Render
+    options.add_argument('--disable-extensions')
+    options.add_argument('--headless')  # If you want to run in headless mode
+    options.add_argument('--disable-gpu')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+
+
     driver = webdriver.Chrome(executable_path=driver_path, options=options)
 
     try:
