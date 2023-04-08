@@ -31,7 +31,7 @@ def get_places():
 
 
       if placesLength is not None:  
-          places = find_places_in_city(query,'./utils/chromedriver.exe',placesLength)
+          places = find_places_in_city(query,placesLength)
 
       places_list = [place.to_dict() for place in places]
 
@@ -74,7 +74,7 @@ def get_places_full_details():
 
 
       if placesLength is not None:  
-          places = find_places_in_city(query,'./utils/chromedriver.exe',placesLength)
+          places = find_places_in_city(query,placesLength)
       
       placesFullDetails = []
 

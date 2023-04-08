@@ -23,7 +23,7 @@ chrome_driver_path = ChromeDriverManager().install()
 query = "restaurants in cairo"
 
 
-def find_places_in_city(query,driver_path=chrome_driver_path,placesLength=None):
+def find_places_in_city(query,placesLength=None,driver_path=chrome_driver_path):
 
   """
   Returns array of places objects found with each place name, link, rating.
