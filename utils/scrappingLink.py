@@ -8,6 +8,10 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import NoSuchElementException
+
+
 
 from utils.scrolling import infinite_scroll
 from utils.placeClass import Place
@@ -39,20 +43,24 @@ def fill_place_details(place,driver_path=path):
     try:
         # fetch the link
         driver.get(place.link)
-
         # find an element to make sure that the page has loaded before scrolling
         descriptionDiv = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "PYvSYb")))
-    except:
+    except TimeoutException:
         descriptionDiv = False  
+    except Exception as e:
+        descriptionDiv = False    
 
     # scrolls the page
     # infinite_scroll(driver,'ipilje')
 
     if descriptionDiv:
-        # find the span that contains description inside the description div
-        descriptionSpan = descriptionDiv.find_element(By.CSS_SELECTOR,'span')
-        # put the description inside description field
-        place.description = descriptionDiv.text
+        try:
+            # find the span that contains description inside the description div
+            # descriptionSpan = descriptionDiv.find_element(By.CSS_SELECTOR,'span')
+            # put the description inside description field
+            place.description = descriptionDiv.text
+        except NoSuchElementException:
+            place.description = ""    
     
     try:  
         # find the button containing the type
@@ -134,3 +142,4 @@ def fill_place_details(place,driver_path=path):
 # print(place.type)
 # print(place.image)
 # print(place.open_close_times)
+
