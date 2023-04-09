@@ -2,4 +2,5 @@ services:
   - type: web
     name: google maps scrapper
     env: docker
+    repo: https://github.com/Marwan8766/Scrapper
     dockerfilepath: ./Dockerfile
