@@ -1,6 +1,7 @@
 services:
   - type: web
-    name: google maps scrapper
-    env: docker
+    name: google-maps-scraper
     repo: https://github.com/Marwan8766/Scrapper
-    docker: ./Dockerfile
+    dockerfile: Dockerfile
+    buildCommand: docker build -t google-maps-scraper .
+    startCommand: docker run -p 5000:5000 google-maps-scraper
