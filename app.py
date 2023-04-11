@@ -2,8 +2,14 @@ from flask import Flask, request, jsonify
 from utils.googleMapsScrapper import find_places_in_city
 from utils.scrappingLink import fill_place_details
 from utils.placeClass import Place
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
+
+# Load environment variables from config.env
+load_dotenv("config.env")
+
 
 @app.route('/api/v1/places', methods=['GET'])
 def get_places():
@@ -147,5 +153,9 @@ def get_place():
       }),404
     
 
+
+# Access environment variables
+port = os.getenv("PORT")
+
 if __name__ == '__main__':
-    app.run(port=3000)
+    app.run(port=port | 3000)
