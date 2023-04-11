@@ -14,8 +14,9 @@ ENV CHROME_BIN /usr/bin/google-chrome-stable
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy only necessary files for the application
+# Copy all necessary files for the application, including the utils folder
 COPY app.py requirements.txt /app/
+COPY utils /app/utils
 
 # Install application dependencies
 RUN pip install -r requirements.txt
