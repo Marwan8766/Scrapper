@@ -157,5 +157,10 @@ def get_place():
 # Access environment variables
 port = os.getenv("PORT")
 
+if port:
+    port = int(port)
+else:
+    port = 3000
+
 if __name__ == '__main__':
-    app.run(port=port | 3000)
+    app.run(port=port)
